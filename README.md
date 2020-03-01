@@ -9,11 +9,11 @@ logstash 를 이용해 ES 에 vertex, edge 자료구조로 변환 적재할 수 
 
 ## build & deploy
 
-build : ./gradlew gem 
-deplay : ./logstash-filter-agenspop_filter-0.7.2.gem
-plugin install : bin/logstash-plugin install --no-verify --local /path/to/javaPlugin.gem
+- build : ./gradlew gem 
+- deplay : ./logstash-filter-agenspop_filter-0.7.2.gem
+- plugin install : bin/logstash-plugin install --no-verify --local /path/to/javaPlugin.gem
     --> 참고문서 https://www.elastic.co/guide/en/logstash/current/java-filter-plugin.html
-sample data : ./samples <== northwind, airroutes
+- sample data : ./samples <== northwind, airroutes
 
 
 ### 참고
