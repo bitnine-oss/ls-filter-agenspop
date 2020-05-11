@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ES_URL="localhost:9200"
-ES_IDX="elasticedge"
+ES_URL="192.168.0.20:9200"
+ES_IDX="agensedge"
 
 echo "\b** 0) delete index : ${ES_URL}/${ES_IDX}"
 curl -X DELETE "${ES_URL}/${ES_IDX}"
@@ -16,7 +16,9 @@ sleep 0.5
 echo "\n** 2) put mapping : ${ES_URL}/${ES_IDX}"
 curl -X PUT "${ES_URL}/${ES_IDX}/_mapping/${ES_IDX}" -H 'Content-Type: application/json' -d'
 {
+  "dynamic": false,  
   "properties":{
+    "created"    : { "type" : "date", "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis" },
     "datasource" : { "type" : "keyword" },
     "id"         : { "type" : "keyword" },
     "label"      : { "type" : "keyword" },
