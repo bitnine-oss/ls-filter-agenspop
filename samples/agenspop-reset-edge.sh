@@ -18,16 +18,16 @@ curl -X PUT "${ES_URL}/${ES_IDX}/_mapping/${ES_IDX}" -H 'Content-Type: applicati
 {
   "dynamic": false,  
   "properties":{
-    "created"    : { "type" : "date", "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis" },
+    "timestamp"  : { "type" : "date", "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis" },
     "datasource" : { "type" : "keyword" },
     "id"         : { "type" : "keyword" },
     "label"      : { "type" : "keyword" },
     "properties" : {
       "type" : "nested",
       "properties": {
-        "key"   : { "type": "keyword" },
-        "type"  : { "type": "keyword" },
-        "value" : { "type" : "text", "fields":{ "keyword": {"type":"keyword", "ignore_above": 256} } }
+        "key"    : { "type": "keyword" },
+        "type"   : { "type": "keyword" },
+        "value"  : { "type" : "text", "fields":{ "keyword": {"type":"keyword", "ignore_above": 256} } }
       }
     },
     "src"        : { "type" : "keyword" },
