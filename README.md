@@ -47,7 +47,22 @@ cd $LS_HOME
 bin/logstash-plugin install --no-verify --local ~/Workspaces/agens/logstash-filter-agenspop_filter-0.7.2.gem
 ```
 
-<img src="">
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-install.png">
+
+
+## import test using agenspop-filter-plugin
+
+1) sample config files for importing northwind data from postgresql 
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-sample_northwind.png">
+
+2) start batch of bulk insert about northwind 
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_before.png">
+
+3) end batch of bulk insert about northwind
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_after.png">
+
+4) northwind graph using agens-workspace
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_graph.png">
 
 
 ### 참고
