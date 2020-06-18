@@ -26,8 +26,7 @@ logstash 를 이용해 ES 에 vertex, edge 자료구조로 변환 적재할 수 
 
 filter plugin 은 logstash source 내용을 기반으로 build 되기 때문에 source 다운로드가 필요하다.
 
-==> logstash [branch 7.2](https://github.com/elastic/logstash/tree/7.2)
-==> logstash [release 7.2.1](https://github.com/elastic/logstash/releases/tag/v7.2.1)
+==> logstash [branch 7.2](https://github.com/elastic/logstash/tree/7.2) or logstash [release 7.2.1](https://github.com/elastic/logstash/releases/tag/v7.2.1)
 
 this.project 의 root_path 에 gradle.properties 를 생성 (핵심은 LOGSTASH_CORE_PATH)
 
