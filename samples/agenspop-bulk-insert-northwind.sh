@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ES_URI="192.168.0.20:9200"
+export ES_URI="192.168.0.30:9200"
 export ES_IDX_VERTEX="agensvertex"
 export ES_IDX_EDGE="agensedge"
 export ES_DATASOURCE="northwind"
@@ -8,7 +8,7 @@ export PG_URI="192.168.0.30:5432"
 export PG_DATABASE="northwind"
 export PG_USER="bitnine"
 export PG_PASSWORD="bitnine"
-export PG_DRIVER_PATH="/Users/bgmin/Workspaces/agenspop/logstash_test/drivers/postgresql-42.2.6.jar"
+export PG_DRIVER_PATH="/home/bgmin/Workspaces/agens/drivers/postgresql-42.2.6.jar"
 
 curl -X POST "${ES_URI}/${ES_IDX_VERTEX}/_delete_by_query?pretty" -H 'Content-Type: application/json' -d'
 {
