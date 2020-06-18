@@ -15,6 +15,19 @@ logstash 를 이용해 ES 에 vertex, edge 자료구조로 변환 적재할 수 
     --> 참고문서 https://www.elastic.co/guide/en/logstash/current/java-filter-plugin.html
 - sample data : ./samples <== northwind, airroutes
 
+## gradle.property 환경변수 및 logstash_core 다운로드 
+
+filter plugin 은 logstash source 내용을 기반으로 build 되기 때문에 source 다운로드가 필요하다.
+
+==> logstash [branch 7.2](https://github.com/elastic/logstash/tree/7.2)
+
+this.project 의 root_path 에 gradle.properties 를 생성 (핵심은 LOGSTASH_CORE_PATH)
+
+```bash
+export OSS=true
+export LOGSTASH_SOURCE=<downloaded_path>
+echo "LOGSTASH_CORE_PATH=${LOGSTASH_SOURCE}/logstash-core" > gradle.properties
+```
 
 ### 참고
 
