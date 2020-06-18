@@ -36,6 +36,20 @@ export LOGSTASH_SOURCE=<downloaded_path>
 echo "LOGSTASH_CORE_PATH=${LOGSTASH_SOURCE}/logstash-core" > gradle.properties
 ```
 
+## deploy plugin 
+
+* ref. [How to write a java filter plugin](https://www.elastic.co/guide/en/logstash/current/java-filter-plugin.html#_installing_the_java_plugin_in_logstash_3)
+
+* 최초 등록시에는 시간이 꽤 걸린다. (약 5분?) 인내심을 가지세요.
+
+```bash
+cd $LS_HOME
+bin/logstash-plugin install --no-verify --local ~/Workspaces/agens/logstash-filter-agenspop_filter-0.7.2.gem
+```
+
+<img src="">
+
+
 ### 참고
 
 [![Travis Build Status](https://travis-ci.org/logstash-plugins/logstash-filter-java_filter_example.svg)](https://travis-ci.org/logstash-plugins/logstash-filter-java_filter_example)
