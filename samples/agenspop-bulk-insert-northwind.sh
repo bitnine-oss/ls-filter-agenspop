@@ -1,14 +1,14 @@
 #!/bin/bash
 
-export ES_URI="192.168.0.30:39200"
+export ES_URI="192.168.0.20:29200"
 export ES_USER="elastic"
 export ES_PASSWORD="bitnine"
 export ES_IDX_VERTEX="agensvertex"
 export ES_IDX_EDGE="agensedge"
 export ES_DATASOURCE="northwind"
-export PG_URI="192.168.0.30:35432"
+export PG_URI="192.168.0.20:25432"
 export PG_DATABASE="northwind"
-export PG_USER="bitnine"
+export PG_USER="agens"
 export PG_PASSWORD="bitnine"
 export PG_DRIVER_PATH="/home/bgmin/Workspaces/agens/drivers/postgresql-42.2.6.jar"
 

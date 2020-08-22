@@ -42,32 +42,42 @@ alter table suppliers add column if not exists rdate varchar(25) null;
 alter table shippers add column if not exists rdate varchar(25) null;
 alter table order_details add column if not exists rdate varchar(25) null;
 
+/*
+select timestamp '2020-08-22T19:22:30';
+---------------------
+ 2020-08-22 19:22:30
+(1 row)
+
+SELECT to_char(now()::timestamp at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS');
+---------------------
+ 2020-08-22T19:27:05
+*/
 
 -- update column 'rdate' for created date
 update categories set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update customers set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update employees set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update orders set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update products set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update suppliers set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update shippers set rdate = 
 	to_char( date( (current_date - '2 years'::interval)+trunc(random() * 365 * 1.9) * '1 day'::interval) 
-					+ current_time, 'YYYY-MM-DD HH24:MI:SS');
+					+ current_time, 'YYYY-MM-DD"T"HH24:MI:SS');
 update order_details d set rdate = a.rdate from orders a where a.order_id = d.order_id;
 
-
+/*
 --
 -- vertices for agenspop
 --
@@ -104,19 +114,21 @@ from orders t1, order_details t2, products t3
 where t2.order_id = t1.order_id and t2.product_id = t3.product_id;
 
 -- edge: part_of (77 rows)
-select distinct t1.product_id, t2.category_id, t1.rdate from products t1, categories t2 where t1.category_id = t2.category_id
+select distinct t1.product_id, t2.category_id, t1.rdate from products t1, categories t2 where t1.category_id = t2.category_id;
 
 -- edge: purchased (830 rows)
-SELECT distinct t1.customer_id, t2.order_id, t2.rdate from customers t1, orders t2 where t1.customer_id = t2.customer_id
+SELECT distinct t1.customer_id, t2.order_id, t2.rdate from customers t1, orders t2 where t1.customer_id = t2.customer_id;
 
 -- edge: reports_to (8 rows)
-SELECT distinct t1.employee_id, t1.reports_to, t1.rdate from employees t1, employees t2 where t1.reports_to = t2.employee_id
+SELECT distinct t1.employee_id, t1.reports_to, t1.rdate from employees t1, employees t2 where t1.reports_to = t2.employee_id;
 
 -- edge: sold (830 rows)
-SELECT distinct t1.employee_id, t2.order_id, t2.rdate from employees t1, orders t2 where t1.employee_id = t2.employee_id
+SELECT distinct t1.employee_id, t2.order_id, t2.rdate from employees t1, orders t2 where t1.employee_id = t2.employee_id;
 
 -- edge: supplies (77 rows)
-SELECT distinct t1.supplier_id, t2.product_id, t1.rdate from suppliers t1, products t2 where t1.supplier_id = t2.supplier_id
+SELECT distinct t1.supplier_id, t2.product_id, t1.rdate from suppliers t1, products t2 where t1.supplier_id = t2.supplier_id;
 
 -- edge: ships (830 rows)
 select distinct t1.order_id, t2.shipper_id, t1.rdate from orders t1, shippers t2 where t1.ship_via = t2.shipper_id;
+
+ */
