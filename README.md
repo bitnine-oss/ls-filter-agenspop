@@ -15,11 +15,18 @@ logstash 를 이용해 ES 에 vertex, edge 자료구조로 변환 적재할 수 
     --> 참고문서 https://www.elastic.co/guide/en/logstash/current/java-filter-plugin.html
 - sample data : ./samples <== northwind, airroutes
 
+## dependencies
+
+- jruby-dist:^9.2.7.0
+- gradle:^4.8
+- groovy:^2.4.12
+- jvm:1.8.0
+
 ## gradle.property 환경변수 및 logstash_core 다운로드 
 
 filter plugin 은 logstash source 내용을 기반으로 build 되기 때문에 source 다운로드가 필요하다.
 
-==> logstash [branch 7.2](https://github.com/elastic/logstash/tree/7.2)
+==> logstash [branch 7.2](https://github.com/elastic/logstash/tree/7.2) or logstash [release 7.2.1](https://github.com/elastic/logstash/releases/tag/v7.2.1)
 
 this.project 의 root_path 에 gradle.properties 를 생성 (핵심은 LOGSTASH_CORE_PATH)
 
@@ -28,6 +35,35 @@ export OSS=true
 export LOGSTASH_SOURCE=<downloaded_path>
 echo "LOGSTASH_CORE_PATH=${LOGSTASH_SOURCE}/logstash-core" > gradle.properties
 ```
+
+## deploy plugin 
+
+* ref. [How to write a java filter plugin](https://www.elastic.co/guide/en/logstash/current/java-filter-plugin.html#_installing_the_java_plugin_in_logstash_3)
+
+* 최초 등록시에는 시간이 꽤 걸린다. (약 5분?) 인내심을 가지세요.
+
+```bash
+cd $LS_HOME
+bin/logstash-plugin install --no-verify --local ~/Workspaces/agens/logstash-filter-agenspop_filter-0.7.2.gem
+```
+
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-install.png">
+
+
+## import test using agenspop-filter-plugin
+
+1) sample config files for importing northwind data from postgresql 
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-sample_northwind.png">
+
+2) start batch of bulk insert about northwind 
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_before.png">
+
+3) end batch of bulk insert about northwind
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_after.png">
+
+4) northwind graph using agens-workspace
+<img src="https://github.com/bitnine-oss/ls-filter-agenspop/blob/master/docs/images/logstash_filter_plugin-northwind_graph.png">
+
 
 ### 참고
 
