@@ -25,8 +25,8 @@ curl -X PUT "${ES_URL}/${ES_IDX}/_mapping/${ES_IDX}" -H 'Content-Type: applicati
     "properties" : {
       "type" : "nested",
       "properties": {
-        "key"    : { "type": "keyword" },
-        "type"   : { "type": "keyword" },
+        "key"    : { "type" : "keyword" },
+        "type"   : { "type" : "keyword" },
         "value"  : { "type" : "text", "fields":{ "keyword": {"type":"keyword", "ignore_above": 256} } }
       }
     },
